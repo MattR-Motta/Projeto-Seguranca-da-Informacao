@@ -1,0 +1,17 @@
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Ambientes virtuais
+.venv/
+venv/
+
+# Arquivos de configuração de editores
+.vscode/
+.idea/
+
+# Chaves privadas
+dados/chaves/*_private.pem
+
+# Arquivos temporários
+*.log

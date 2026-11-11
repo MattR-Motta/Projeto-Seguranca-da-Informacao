@@ -1,0 +1,104 @@
+
+MENSAGEMSEGURA - CONCEITOS DE SEGURANÇA
+
+1. O QUE É CRIPTOGRAFIA?
+
+A criptografia é uma forma de proteger informações, transformando uma mensagem que pode ser lida normalmente em um conteúdo que não pode ser entendido por pessoas que não possuem a chave necessária para acessá-lo.
+
+No MensagemSegura, ela é utilizada para proteger as mensagens durante o compartilhamento.
+
+2. O QUE É CRIPTOGRAFIA HÍBRIDA?
+
+É uma combinação de dois tipos de proteção.
+
+O primeiro protege diretamente a mensagem. O segundo protege a chave utilizada nessa proteção.
+
+No MensagemSegura, funciona assim:
+
+- A mensagem é protegida utilizando AES-256-GCM.
+- Uma chave exclusiva é criada para proteger cada mensagem.
+- Essa chave é protegida utilizando RSA-OAEP.
+- O destinatário utiliza sua chave privada para recuperar a chave da mensagem e conseguir ler o conteúdo.
+
+Essa combinação permite proteger o conteúdo sem precisar compartilhar a chave principal de forma aberta.
+
+3. O QUE É AES-256-GCM?
+
+É o método utilizado para proteger o conteúdo das mensagens.
+
+Além de impedir que pessoas sem autorização leiam o conteúdo, ele também ajuda a identificar se os dados foram modificados.
+
+No MensagemSegura, uma chave aleatória é criada para cada mensagem, tornando a proteção individual para cada envio.
+
+4. O QUE É RSA-OAEP?
+
+É o método utilizado para proteger a chave criada pelo AES.
+
+Ele utiliza duas chaves diferentes:
+
+- Chave pública: pode ser compartilhada e é utilizada para proteger a chave da mensagem.
+- Chave privada: deve permanecer em segurança e é utilizada para recuperar a chave protegida.
+
+Dessa forma, somente quem possui a chave privada correspondente consegue recuperar a chave da mensagem.
+
+5. O QUE É INTEGRIDADE?
+
+Integridade significa garantir que uma informação não foi modificada sem autorização.
+
+No MensagemSegura, essa proteção é realizada pelo AES-256-GCM.
+
+Quando alguém altera os dados protegidos, o sistema consegue identificar o problema e impede que a mensagem seja recuperada normalmente.
+
+6. O QUE É ASSINATURA DIGITAL?
+
+A assinatura digital funciona como uma forma de demonstrar que uma mensagem foi assinada utilizando determinada chave privada.
+
+No MensagemSegura, utilizamos RSA-PSS com SHA-256.
+
+O remetente utiliza sua chave privada para criar a assinatura. O destinatário utiliza a chave pública correspondente para verificar se a assinatura é válida.
+
+Se a mensagem for modificada depois de assinada, a verificação deverá indicar que a assinatura não é válida.
+
+7. O QUE É AUTENTICIDADE?
+
+Autenticidade está relacionada à confirmação de quem produziu ou assinou uma informação.
+
+No projeto, a assinatura digital ajuda a verificar se a mensagem corresponde à assinatura criada pela chave privada do remetente.
+
+É importante lembrar que uma assinatura válida, sozinha, não garante a identidade real de uma pessoa. Para isso, é necessário confiar na associação entre a pessoa e sua chave pública.
+
+8. QUAL A DIFERENÇA ENTRE SIGILO E AUTENTICIDADE?
+
+Embora estejam relacionados à segurança, são conceitos diferentes.
+
+Sigilo:
+Busca impedir que pessoas não autorizadas tenham acesso ao conteúdo de uma mensagem.
+
+Autenticidade:
+Busca verificar se uma mensagem foi assinada pela chave privada correspondente à chave pública utilizada na verificação.
+
+No MensagemSegura, o sigilo é trabalhado pela criptografia híbrida, enquanto a autenticidade é trabalhada pela assinatura digital.
+
+9. O QUE SÃO CERTIFICADOS DIGITAIS?
+
+Certificados digitais são documentos eletrônicos que ajudam a relacionar uma chave pública a uma pessoa ou organização.
+
+Eles permitem que outras pessoas tenham mais confiança de que determinada chave pública realmente pertence a quem afirma ser seu proprietário.
+
+10. O QUE É PKI?
+
+PKI é um conjunto de regras, procedimentos e recursos utilizados para organizar e verificar certificados digitais.
+
+Ela ajuda a estabelecer confiança entre pessoas e organizações que utilizam certificados para se comunicar com segurança.
+
+O MensagemSegura não implementa emissão ou validação de certificados digitais nem uma estrutura PKI. Esses conceitos são apresentados como parte dos conhecimentos relacionados à segurança da comunicação.
+
+11. LIMITES DA SOLUÇÃO
+
+O MensagemSegura é um protótipo desenvolvido para demonstrar o funcionamento de mecanismos de segurança.
+
+A aplicação utiliza chaves armazenadas localmente e não possui uma estrutura completa de distribuição e confirmação de identidade dos usuários.
+
+A troca de mensagens entre computadores diferentes depende do compartilhamento dos dados protegidos e da distribuição segura das chaves públicas correspondentes.
+
+Por isso, o projeto demonstra recursos importantes de proteção, mas não deve ser considerado, em sua forma atual, um sistema completo de comunicação segura para uso com informações reais e sensíveis.
