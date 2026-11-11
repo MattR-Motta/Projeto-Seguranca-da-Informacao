@@ -82,18 +82,18 @@ py --version
 Caso utilize Git, execute:
 
 ```bash
-git clone https://github.com/MattR-Motta/Projeto-Residencia
+git clone https://github.com/MattR-Motta/Projeto-Seguranca-da-Informacao.git
 ```
 
 **2. Entre na pasta do projeto.**
 
 ```bash
-cd Projeto-Residencia
+cd Projeto-Seguranca-da-Informacao
 ```
 
 **3. Instale as dependências.**
 
-O projeto possui um arquivo chamado `requirements.txt`, que contém as bibliotecas necessárias para executar a aplicação.
+O projeto possui um arquivo chamado `requerimentos.txt`, que contém as bibliotecas necessárias para executar a aplicação.
 
 Execute:
 
