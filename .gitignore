@@ -15,3 +15,6 @@ dados/chaves/*_private.pem
 
 # Arquivos temporários
 *.log
+# Banco local de contas (não versionar registros de usuários)
+dados/usuarios.db
+dados/usuarios.db-*

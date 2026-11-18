@@ -2,6 +2,7 @@ import customtkinter as ctk
 from interface.gerenciadorChaves import GerenciadorChaves
 from interface.comunicacao import Comunicacao
 from interface.testesSeguranca import TestesSeguranca
+from interface.autenticacao import Autenticacao
 
 class JanelaPrincipal(ctk.CTk):
     def __init__(self):
@@ -32,8 +33,6 @@ class JanelaPrincipal(ctk.CTk):
         self.mostrarPagina("inicio")
 
     def criarMenuLateral(self):
-        """Cria o menu lateral de navegação."""
-
         self.menuLateral = ctk.CTkFrame(
             self,
             width=230,
@@ -77,6 +76,7 @@ class JanelaPrincipal(ctk.CTk):
 
         opcoesMenu = [
             ("Início", "inicio"),
+            ("Autenticação", "autenticacao"),
             ("Comunicação", "comunicacao"),
             ("Gerenciar chaves", "chaves"),
             ("Testes de segurança", "testes")
@@ -119,8 +119,6 @@ class JanelaPrincipal(ctk.CTk):
         )
 
     def criarAreaPrincipal(self):
-        """Cria a área onde as páginas serão exibidas."""
-
         self.areaPrincipal = ctk.CTkFrame(
             self,
             corner_radius=0,
@@ -139,14 +137,10 @@ class JanelaPrincipal(ctk.CTk):
         self.areaPrincipal.grid_rowconfigure(0, weight=1)
 
     def limparAreaPrincipal(self):
-        """Remove os elementos da página atualmente exibida."""
-
         for componente in self.areaPrincipal.winfo_children():
             componente.destroy()
 
     def atualizarMenu(self, paginaSelecionada):
-        """Destaca a opção selecionada no menu."""
-
         for pagina, botao in self.botoesMenu.items():
 
             if pagina == paginaSelecionada:
@@ -161,13 +155,21 @@ class JanelaPrincipal(ctk.CTk):
                 )
 
     def mostrarPagina(self, pagina):
-        """Controla a navegação entre as páginas."""
-
         self.limparAreaPrincipal()
         self.atualizarMenu(pagina)
 
         if pagina == "inicio":
             self.mostrarInicio()
+
+        elif pagina == "autenticacao":
+            self.telaAutenticacao = Autenticacao(
+                self.areaPrincipal
+            )
+
+            self.telaAutenticacao.pack(
+                fill="both",
+                expand=True
+            )
 
         elif pagina == "comunicacao":
             self.telaComunicacao = Comunicacao(
@@ -200,8 +202,6 @@ class JanelaPrincipal(ctk.CTk):
             )
 
     def mostrarInicio(self):
-        """Exibe a página inicial do sistema."""
-
         titulo = ctk.CTkLabel(
             self.areaPrincipal,
             text="Bem-vindo ao MensagemSegura!",

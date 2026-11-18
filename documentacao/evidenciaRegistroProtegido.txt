@@ -1,0 +1,24 @@
+EVIDÊNCIA — REGISTRO PROTEGIDO COM ARGON2ID
+================================================
+
+Demonstração executada por:
+    py -m testes.demonstrarRegistroProtegido
+
+Saída observada:
+
+=== EVIDÊNCIA DE REGISTRO PROTEGIDO ===
+Usuário: usuario demonstracao
+Hash armazenado: $argon2id$v=19$m=65536,t=3,p=4$v+D5V7rR19fVLXQE0zlfDw$CH2odcq3mRx7WOZ0XPZVUhNm/WGj7SSGr8MG5gRl/gY
+Criado em: 2026-11-17 16:29:51
+Senha original armazenada: NÃO
+Formato do hash: Argon2id (PHC)
+Banco temporário: removido ao finalizar a demonstração.
+
+Interpretação:
+- O valor persistido começa com "$argon2id$", identificando a variante utilizada.
+- O formato PHC inclui versão, parâmetros, salt e hash derivado.
+- A senha aleatória de demonstração não é exibida nem gravada em texto puro.
+- O banco utilizado nesta demonstração é temporário e é removido ao final.
+- A demonstração não altera nem cria registros no banco real da aplicação.
+
+Observação: o salt e o hash são aleatórios e mudam a cada execução. O valor acima é uma evidência de uma execução específica, não uma credencial reutilizável.
